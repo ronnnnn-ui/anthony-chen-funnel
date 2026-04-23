@@ -3,588 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NewSparkPlug | Fill Your Bays with High-ROI Repair Orders</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>NewSparkPlug | Stop Buying Ads. Start Buying Repair Orders.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #E8001C;
-            --dark: #0F1115;
-            --darker: #08090B;
-            --gray: #1E2128;
-            --light-gray: #A0A5B1;
-            --white: #FFFFFF;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--darker);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .heading-font {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Navbar */
-        nav {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(8, 9, 11, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--gray);
-        }
-
-        .logo img {
-            height: 40px;
-        }
-
-        .cta-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(232, 0, 28, 0.3);
-            filter: brightness(1.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(232, 0, 28, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 64px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--white);
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: var(--light-gray);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            border: 1px solid var(--gray);
-        }
-
-        /* Credibility Bar */
-        .cred-bar {
-            padding: 40px 0;
-            background: var(--dark);
-            border-top: 1px solid var(--gray);
-            border-bottom: 1px solid var(--gray);
-        }
-
-        .cred-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            opacity: 0.6;
-            filter: grayscale(1);
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .cred-container img {
-            height: 30px;
-        }
-
-        /* Problem Section */
-        .problem {
-            padding: 100px 0;
-            background: var(--darker);
-        }
-
-        .section-tag {
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .problem h2 {
-            font-size: 48px;
-            margin-bottom: 60px;
-            max-width: 800px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .card {
-            background: var(--gray);
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--primary);
-        }
-
-        .card p {
-            color: var(--light-gray);
-        }
-
-        /* Solution Section */
-        .solution {
-            padding: 100px 0;
-            background: var(--dark);
-        }
-
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .solution h2 {
-            font-size: 48px;
-            margin-bottom: 24px;
-        }
-
-        .feature-item {
-            margin-bottom: 32px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .feature-text h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            text-transform: none;
-        }
-
-        .feature-text p {
-            color: var(--light-gray);
-            font-size: 15px;
-        }
-
-        /* Social Proof */
-        .testimonials {
-            padding: 100px 0;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-
-        .testimonial-card {
-            background: var(--gray);
-            padding: 40px;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .testimonial-card p {
-            font-size: 18px;
-            font-style: italic;
-            margin-bottom: 24px;
-            color: var(--white);
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .client-info img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-        }
-
-        .client-info h4 {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .client-info span {
-            color: var(--light-gray);
-            font-size: 14px;
-        }
-
-        /* Lead Magnet */
-        .lead-gen {
-            padding: 80px 0;
-            background: var(--primary);
-            text-align: center;
-        }
-
-        .lead-gen h2 {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-
-        .lead-gen p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 12px;
-        }
-
-        input {
-            flex: 1;
-            padding: 16px;
-            border-radius: 4px;
-            border: none;
-            font-family: inherit;
-        }
-
-        .btn-dark {
-            background: var(--darker);
-            color: white;
-            padding: 16px 32px;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .about img {
-            width: 100%;
-            border-radius: 8px;
-            filter: grayscale(0.5);
-            transition: var(--transition);
-        }
-
-        .about img:hover {
-            filter: grayscale(0);
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid var(--gray);
-            color: var(--light-gray);
-            font-size: 14px;
-        }
-
-        @media (max-width: 992px) {
-            .hero-content, .solution-content, .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero h1 { font-size: 48px; }
-            .grid-3, .testimonial-grid { grid-template-columns: 1fr; }
-            .form-container { flex-direction: column; }
-            .hero-image { order: -1; }
-        }
-
-        /* Animations */
-        [data-reveal] {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-reveal].active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        :root{--red:#E8001C;--red-glow:rgba(232,0,28,.35);--dark:#0D0D0D;--darker:#070707;--surface:#141414;--surface2:#1C1C1C;--border:#252525;--gray:#7A7A7A;--light:#CCCCCC;--white:#FFFFFF;--ease:cubic-bezier(0.4,0,0.2,1);}
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+        html{scroll-behavior:smooth;}
+        body{font-family:"Inter",sans-serif;background:var(--darker);color:var(--white);line-height:1.6;overflow-x:hidden;}
+        h1,h2,h3,h4{font-family:"Poppins",sans-serif;font-weight:800;line-height:1.1;}
+        a{text-decoration:none;}
+        .container{max-width:1160px;margin:0 auto;padding:0 28px;}
+        /* NAV */
+        nav{position:sticky;top:0;z-index:200;background:rgba(7,7,7,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+        .nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;}
+        .logo-txt{font-family:"Poppins",sans-serif;font-weight:900;font-size:22px;color:var(--white);}
+        .logo-txt span{color:var(--red);}
+        /* BUTTONS */
+        .btn-red{display:inline-block;background:var(--red);color:#fff;padding:13px 30px;border-radius:5px;font-family:"Poppins",sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px;border:none;cursor:pointer;transition:all .25s var(--ease);}
+        .btn-red:hover{background:#FF1A33;transform:translateY(-2px);box-shadow:0 14px 36px var(--red-glow);}
+        .btn-outline{display:inline-block;background:transparent;color:var(--white);padding:13px 28px;border-radius:5px;font-family:"Poppins",sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px;border:2px solid var(--border);cursor:pointer;transition:all .25s var(--ease);}
+        .btn-outline:hover{border-color:var(--red);color:var(--red);}
+        /* HERO */
+        .hero{padding:96px 0 80px;position:relative;overflow:hidden;}
+        .hero::before{content:"";position:absolute;top:-150px;right:-100px;width:650px;height:650px;background:radial-gradient(circle,rgba(232,0,28,.11) 0%,transparent 68%);pointer-events:none;}
+        .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:center;}
+        .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,0,28,.1);border:1px solid rgba(232,0,28,.3);color:var(--red);padding:6px 16px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:28px;}
+        .hero-tag::before{content:"";width:6px;height:6px;background:var(--red);border-radius:50%;animation:dot-pulse 2s ease infinite;}
+        @keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.6);}}
+        .hero h1{font-size:60px;letter-spacing:-1.5px;text-transform:uppercase;margin-bottom:24px;}
+        .hero h1 .accent{color:var(--red);}
+        .hero-sub{font-size:19px;color:var(--light);margin-bottom:40px;max-width:540px;line-height:1.65;}
+        .hero-sub strong{color:var(--white);}
+        .hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:56px;}
+        .hero-stats{display:flex;gap:44px;flex-wrap:wrap;}
+        .stat-num{font-family:"Poppins",sans-serif;font-weight:900;font-size:38px;line-height:1;}
+        .stat-num .sa{color:var(--red);}
+        .stat-label{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1.2px;margin-top:5px;}
+        .hero-img-wrap{position:relative;}
+        .hero-img-wrap img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 40px 80px rgba(0,0,0,.6);}
+        .hero-img-placeholder{width:100%;aspect-ratio:4/3;background:var(--surface);border-radius:12px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:14px;}
+        .h-badge{position:absolute;background:rgba(10,10,10,.92);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 40px rgba(0,0,0,.5);backdrop-filter:blur(10px);animation:float 4s ease-in-out infinite;}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+        .h-badge.b1{bottom:-22px;left:-24px;}
+        .h-badge.b2{top:-18px;right:-18px;animation-delay:.6s;}
+        .badge-icon{width:40px;height:40px;background:rgba(232,0,28,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--red);flex-shrink:0;}
+        .badge-val{font-family:"Poppins",sans-serif;font-weight:900;font-size:20px;line-height:1;color:var(--white);}
+        .badge-lbl{font-size:11px;color:var(--gray);margin-top:3px;}
+        /* TRUST BAR */
+        .trust-bar{padding:36px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+        .trust-label{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:var(--gray);text-align:center;margin-bottom:24px;}
+        .trust-row{display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap;}
+        .trust-item{display:flex;align-items:center;gap:9px;opacity:.55;transition:opacity .3s;}
+        .trust-item:hover{opacity:1;}
+        .trust-item svg{width:26px;height:26px;}
+        .trust-item span{font-family:"Poppins",sans-serif;font-weight:700;font-size:14px;color:var(--white);}
+        /* SECTIONS */
+        .section{padding:96px 0;}
+        .eyebrow{display:inline-block;color:var(--red);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:18px;}
+        .sec-title{font-size:50px;letter-spacing:-1px;text-transform:uppercase;max-width:800px;margin-bottom:14px;}
+        .sec-sub{font-size:18px;color:var(--light);max-width:620px;margin-bottom:56px;line-height:1.7;}
+        /* PROBLEM */
+        .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+        .prob-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:38px 32px;transition:all .3s var(--ease);position:relative;overflow:hidden;}
+        .prob-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
+        .prob-card:hover::after{transform:scaleX(1);}
+        .prob-card:hover{border-color:rgba(232,0,28,.25);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4);}
+        .prob-num{font-family:"Poppins",sans-serif;font-size:60px;font-weight:900;color:rgba(232,0,28,.07);line-height:1;margin-bottom:18px;}
+        .prob-card h3{font-size:21px;text-transform:uppercase;margin-bottom:13px;}
+        .prob-card p{color:var(--light);font-size:15px;line-height:1.75;}
+        /* SOLUTION */
+        .sol-bg{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+        .sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;}
+        .steps{display:flex;flex-direction:column;}
+        .step{display:flex;gap:22px;padding:28px 0;border-bottom:1px solid var(--border);}
+        .step:last-child{border-bottom:none;}
+        .step-num{font-family:"Poppins",sans-serif;font-weight:900;font-size:44px;color:var(--red);line-height:1;min-width:54px;}
+        .step h3{font-size:19px;text-transform:uppercase;margin-bottom:9px;}
+        .step p{color:var(--light);font-size:14px;line-height:1.75;}
+        .sol-img img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 32px 64px rgba(0,0,0,.55);}
+        /* TESTIMONIALS */
+        .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:56px;}
+        .testi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:38px;transition:all .3s var(--ease);}
+        .testi:hover{border-color:rgba(232,0,28,.25);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.4);}
+        .stars{color:#F5A623;font-size:16px;letter-spacing:2px;margin-bottom:18px;}
+        .testi blockquote{font-size:16px;line-height:1.75;color:var(--white);font-style:italic;margin-bottom:26px;position:relative;padding-left:20px;}
+        .testi blockquote::before{content:"C";position:absolute;left:0;top:-4px;color:var(--red);font-size:28px;font-style:normal;font-family:"Poppins",sans-serif;line-height:1;}
+        .c-row{display:flex;align-items:center;gap:13px;}
+        .c-avatar{width:46px;height:46px;border-radius:50%;background:var(--surface2);border:2px solid rgba(232,0,28,.5);display:flex;align-items:center;justify-content:center;font-family:"Poppins",sans-serif;font-weight:800;font-size:16px;color:var(--red);flex-shrink:0;}
+        .c-name{font-family:"Poppins",sans-serif;font-weight:700;font-size:14px;}
+        .c-title{font-size:12px;color:var(--gray);margin-top:2px;}
+        /* LEAD MAGNET */
+        .lead-bg{background:linear-gradient(135deg,var(--red) 0%,#8B000E 100%);padding:80px 0;}
+        .lead-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:64px;align-items:center;}
+        .lead-bg h2{font-size:42px;text-transform:uppercase;letter-spacing:-.5px;margin-bottom:16px;}
+        .lead-bg p{font-size:17px;opacity:.92;line-height:1.7;}
+        .lead-perks{margin-top:20px;display:flex;flex-direction:column;gap:8px;padding:0;}
+        .lead-perks li{display:flex;align-items:center;gap:8px;font-size:14px;list-style:none;opacity:.9;}
+        .lead-perks li::before{content:"¹3";font-weight:700;flex-shrink:0;}
+        .lead-form{display:flex;flex-direction:column;gap:11px;}
+        .lead-form input{padding:15px 18px;border-radius:6px;border:none;font-family:"Inter",sans-serif;font-size:14px;background:rgba(255,255,255,.96);color:#111;}
+        .lead-form input::placeholder{color:#888;}
+        .btn-dark{background:rgba(0,0,0,.85);color:#fff;padding:17px 20px;border-radius:6px;font-family:"Poppins",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.5px;border:none;cursor:pointer;transition:all .25s var(--ease);}
+        .btn-dark:hover{background:#000;transform:translateY(-2px);}
+        .lead-privacy{font-size:11px;opacity:.65;text-align:center;margin-top:4px;}
+        /* PRICING */
+        .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+        .price-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:38px;transition:all .3s var(--ease);position:relative;}
+        .price-card.hot{border-color:var(--red);}
+        .price-card.hot::before{content:"MOST POPULAR";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:"Poppins",sans-serif;font-weight:700;font-size:10px;letter-spacing:1.5px;padding:4px 14px;border-radius:100px;white-space:nowrap;}
+        .price-card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(0,0,0,.45);}
+        .price-name{font-family:"Poppins",sans-serif;font-weight:800;font-size:20px;text-transform:uppercase;margin-bottom:7px;}
+        .price-desc{font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.5;}
+        .price-budget{font-size:12px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+        .price-cta-lbl{font-size:24px;font-family:"Poppins",sans-serif;font-weight:800;margin-bottom:4px;}
+        .price-note{font-size:12px;color:var(--gray);margin-bottom:28px;}
+        .price-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px;padding:0;}
+        .price-ul li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--light);line-height:1.5;}
+        .price-ul li::before{content:"¹3";color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+        /* ABOUT */
+        .about-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:80px;align-items:center;}
+        .about-img img{width:100%;border-radius:12px;border:1px solid var(--border);}
+        .about-img-placeholder{width:100%;aspect-ratio:3/4;background:var(--surface);border-radius:12px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:14px;}
+        .about-grid h2{font-size:46px;text-transform:uppercase;letter-spacing:-1px;margin-bottom:6px;}
+        .about-role{color:var(--red);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:26px;}
+        .about-p{color:var(--light);font-size:16px;line-height:1.8;margin-bottom:18px;}
+        .about-q{border-left:3px solid var(--red);padding-left:22px;font-family:"Poppins",sans-serif;font-size:18px;font-weight:600;font-style:italic;line-height:1.55;color:var(--white);margin-top:28px;}
+        /* FINAL CTA */
+        .final{padding:120px 0;text-align:center;position:relative;overflow:hidden;}
+        .final::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(232,0,28,.09) 0%,transparent 68%);pointer-events:none;}
+        .final h2{font-size:60px;text-transform:uppercase;letter-spacing:-1.5px;max-width:860px;margin:0 auto 22px;}
+        .final h2 .accent{color:var(--red);}
+        .final p{font-size:19px;color:var(--light);max-width:560px;margin:0 auto 48px;}
+        .guarantee-row{margin-top:24px;color:var(--gray);font-size:13px;}
+        /* FOOTER */
+        footer{padding:44px 0;border-top:1px solid var(--border);}
+        .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+        .foot-copy{font-size:13px;color:var(--gray);}
+        /* ANIMATIONS */
+        [data-fade]{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+        [data-fade].visible{opacity:1;transform:translateY(0);}
+        /* RESPONSIVE */
+        @media(max-width:1020px){.hero-grid,.sol-grid,.about-grid{grid-template-columns:1fr;gap:44px;}.hero h1{font-size:46px;}.final h2{font-size:40px;}.sec-title{font-size:38px;}}
+        @media(max-width:768px){.prob-grid,.testi-grid,.price-grid{grid-template-columns:1fr;}.lead-grid{grid-template-columns:1fr;}.hero h1{font-size:36px;}.hero-stats{gap:20px;}.trust-row{gap:28px;}.h-badge{display:none;}.foot-inner{flex-direction:column;text-align:center;}.section{padding:72px 0;}}
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div class="logo">
-                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/NewSparkPlug-Logo-Light.png" alt="NewSparkPlug">
-            </div>
-            <a href="#audit" class="cta-btn">Book Free Audit</a>
+<nav>
+    <div class="container">
+        <div class="nav-inner">
+            <div class="logo-txt">New<span>Spark</span>Plug</div>
+            <a href="#strategy-call" class="btn-red">Book Free Strategy Call</a>
         </div>
-    </nav>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div data-reveal class="active">
-                    <span class="section-tag">High-Performance Marketing</span>
-                    <h1>Stop Chasing "Likes" And Start <span>Filling Bays.</span></h1>
-                    <p>We help independent auto repair shop owners generate predictable, high-ROI repair orders with the 90-Day Growth Accelerator.</p>
-                    <a href="#audit" class="cta-btn" style="padding: 18px 40px; font-size: 16px;">Scale Your Shop Now</a>
+    </div>
+</nav>
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div data-fade>
+                <div class="hero-tag">90-Day Growth Accelerator</div>
+                <h1>Stop Buying Ads. Start Buying <span class="accent">Repair Orders.</span></h1>
+                <p class="hero-sub">The only auto repair marketing agency that <strong>guarantees your lead volume</strong> — or refunds your ad spend. Precision Google Ads, custom landing pages, and real-time ROI tracking built exclusively for independent shops.</p>
+                <div class="hero-ctas">
+                    <a href="#strategy-call" class="btn-red" style="padding:16px 38px;font-size:15px;">Book Free Strategy Call</a>
+                    <a href="#how-it-works" class="btn-outline" style="padding:16px 28px;font-size:13px;">See How It Works</a>
                 </div>
-                <div class="hero-image" data-reveal class="active">
-                    <!-- Placeholder image since I can't guarantee the exact URL works without checking, but using the scraped one -->
-                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Anthony-Chen.png" alt="Anthony Chen - NewSparkPlug">
+                <div class="hero-stats">
+                    <div><div class="stat-num"><span class="sa">800</span>%</div><div class="stat-label">Max ROI Month 1</div></div>
+                    <div><div class="stat-num"><span class="sa">90</span></div><div class="stat-label">Day Guarantee</div></div>
+                    <div><div class="stat-num"><span class="sa">100</span>%</div><div class="stat-label">Money-Back Promise</div></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="cred-bar">
-        <div class="container">
-            <div class="cred-container">
-                <span style="color: white; font-weight: 700; letter-spacing: 1px;">TRUSTED BY TOP SHOPS:</span>
-                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/google-partner.png" alt="Google Partner">
-                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/hubspot.png" alt="HubSpot">
-                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/facebook-marketing.png" alt="FB Marketing">
+            <div class="hero-img-wrap" data-fade style="transition-delay:.15s;">
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2024/10/growth-accelerator.jpg" alt="NewSparkPlug Growth Accelerator" onerror="this.parentNode.innerHTML='<div class="hero-img-placeholder">Growth Accelerator Dashboard</div>'">
+                <div class="h-badge b1">
+                    <div class="badge-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                    <div><div class="badge-val">+600%</div><div class="badge-lbl">Avg ROI — 90 Days</div></div>
+                </div>
+                <div class="h-badge b2">
+                    <div class="badge-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div><div class="badge-val">Guaranteed</div><div class="badge-lbl">Lead Volume</div></div>
+                </div>
             </div>
         </div>
     </div>
-
-    <section class="problem">
-        <div class="container">
-            <span class="section-tag">The Problem</span>
-            <h2 data-reveal>Most marketing agencies talk about "Clicks." We talk about "Car Count."</h2>
-            <div class="grid-3">
-                <div class="card" data-reveal>
-                    <h3>Empty Bays</h3>
-                    <p>Inconsistent lead flow means your techs are sitting around on Tuesdays waiting for the phone to ring.</p>
-                </div>
-                <div class="card" data-reveal>
-                    <h3>Tire Kickers</h3>
-                    <p>Tired of price-shoppers calling just to ask "how much for an oil change?" and never booking?</p>
-                </div>
-                <div class="card" data-reveal>
-                    <h3>Zero Tracking</h3>
-                    <p>You're spending money on marketing but have no idea if it's actually turning into repair orders.</p>
-                </div>
+</section>
+<div class="trust-bar">
+    <div class="container">
+        <p class="trust-label">Powered by the platforms that fill your bays</p>
+        <div class="trust-row">
+            <div class="trust-item"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span>Google Ads</span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook Ads</span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span>Local SEO</span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Custom Landing Pages</span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Sales Tracking</span></div>
+        </div>
+    </div>
+</div>
+<section class="section" style="background:var(--darker);">
+    <div class="container">
+        <span class="eyebrow" data-fade>The Problem</span>
+        <h2 class="sec-title" data-fade>Why Most Shop Owners Keep Getting Burned By Marketing</h2>
+        <p class="sec-sub" data-fade>Generic agencies run generic ads. They report on “impressions” and “reach” while your bays sit empty. Here’s the cycle most shops are stuck in:</p>
+        <div class="prob-grid">
+            <div class="prob-card" data-fade>
+                <div class="prob-num">01</div>
+                <h3>Empty Bays on Tuesdays</h3>
+                <p>Your techs are clocked in, standing around, costing you money. Inconsistent lead flow means unpredictable revenue. No way to plan, hire, or grow. The phone doesn’t ring on its own.</p>
+            </div>
+            <div class="prob-card" data-fade style="transition-delay:.1s;">
+                <div class="prob-num">02</div>
+                <h3>Tire-Kickers, Not Buyers</h3>
+                <p>“How much for an oil change?” Broad, generic ads attract price shoppers. They call. They compare. They ghost. The high-value repair orders — the ones that actually move the needle — never come.</p>
+            </div>
+            <div class="prob-card" data-fade style="transition-delay:.2s;">
+                <div class="prob-num">03</div>
+                <h3>Ad Spend Down a Black Hole</h3>
+                <p>You’re spending on marketing with zero visibility into what’s actually turning into revenue. No tracking. No accountability. No way to know if a single dollar is working for your shop.</p>
             </div>
         </div>
-    </section>
-
-    <section class="solution">
-        <div class="container">
-            <div class="solution-content">
-                <div data-reveal>
-                    <span class="section-tag">Our Mechanism</span>
-                    <h2>The Bay-Filling Blueprint</h2>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Precision Google Ads</h3>
-                            <p>We target customers actively searching for "auto repair near me" for the specific services you want more of.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>High-Conversion Funnels</h3>
-                            <p>Our custom landing pages are engineered to turn skeptical visitors into confirmed appointments.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Lead-to-RO Tracking</h3>
-                            <p>We sync with your Shop Management System to prove exactly how much revenue our campaigns generated.</p>
-                        </div>
-                    </div>
-                </div>
-                <div data-reveal>
-                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Dashboard-Mockup.png" alt="ROI Dashboard" style="width:100%; border-radius: 8px; border: 1px solid var(--gray);">
+    </div>
+</section>
+<section class="section sol-bg" id="how-it-works">
+    <div class="container">
+        <div class="sol-grid">
+            <div>
+                <span class="eyebrow" data-fade>The 90-Day Growth Accelerator</span>
+                <h2 class="sec-title" data-fade>A System Built for One Metric: Car Count.</h2>
+                <p class="sec-sub" data-fade>We don’t do general marketing. We do auto repair marketing — and we built this system from the ground up around the only metric that matters to shop owners.</p>
+                <div class="steps">
+                    <div class="step" data-fade><div class="step-num">01</div><div><h3>Discovery &amp; Strategy</h3><p>We start with a strategy call to understand your shop, market, and goals. Then we build a precision campaign targeting the services with the highest ticket value — not just oil changes.</p></div></div>
+                    <div class="step" data-fade><div class="step-num">02</div><div><h3>Precision Campaign Launch</h3><p>Google Ads, Facebook Ads, custom landing pages engineered to convert — all live within the first week. Every campaign is built to attract customers who are ready to book, not just browse.</p></div></div>
+                    <div class="step" data-fade><div class="step-num">03</div><div><h3>Lead Qualification</h3><p>We continuously monitor, filter, and optimize for high-value leads. Not every click is worth your time. We make sure the ones who call are the ones who spend.</p></div></div>
+                    <div class="step" data-fade><div class="step-num">04</div><div><h3>Real-Time ROI Tracking</h3><p>Live dashboard. Every lead, every booking, every dollar in revenue tied back to a specific campaign. No more guessing. Full transparency, every day. We provide real-time tracking of your leads and sales.</p></div></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <span class="section-tag">Success Stories</span>
-            <h2 data-reveal style="margin-bottom: 60px;">Real Results For Real Shops</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card" data-reveal>
-                    <p>"NewSparkPlug doubled our car count in 90 days. We went from wondering if we'd survive to hiring two new techs just to keep up."</p>
-                    <div class="client-info">
-                        <img src="https://i.pravatar.cc/150?u=shop1" alt="Client">
-                        <div>
-                            <h4>Mike Sullivan</h4>
-                            <span>Owner, Sullivan's Auto Care</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card" data-reveal>
-                    <p>"Finally an agency that speaks my language. Every dollar I give them comes back as $10 in repair orders. No fluff, just results."</p>
-                    <div class="client-info">
-                        <img src="https://i.pravatar.cc/150?u=shop2" alt="Client">
-                        <div>
-                            <h4>David Miller</h4>
-                            <span>Performance Euro Shop</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="sol-img" data-fade style="transition-delay:.15s;">
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2024/10/growth-accelerator.jpg" alt="Growth Accelerator Dashboard" onerror="this.style.display="none"">
             </div>
         </div>
-    </section>
-
-    <section id="audit" class="lead-gen">
-        <div class="container">
-            <h2 data-reveal>Get Your Free Bay-Filling Audit</h2>
-            <p data-reveal>We'll analyze your current market and show you exactly how many repair orders you're leaving on the table.</p>
-            <div class="form-container" data-reveal>
-                <input type="text" placeholder="Shop Name">
-                <input type="email" placeholder="Work Email">
-                <button class="btn-dark">Analyze My Shop</button>
+    </div>
+</section>
+<section class="section" style="background:var(--darker);">
+    <div class="container">
+        <span class="eyebrow" data-fade>Real Results</span>
+        <h2 class="sec-title" data-fade>Shops That Ran the System. Numbers That Don’t Lie.</h2>
+        <div class="testi-grid">
+            <div class="testi" data-fade>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>New Sparkplug’s team really understands the auto repair business. They built us custom landing pages that spoke directly to our customers, and their ad campaigns were laser-focused. We started seeing results in just a few weeks, and by the end of the 90 days, our new customer count had doubled. Their lead guarantee is real, and they made sure every dollar of our ad spend worked hard.</blockquote>
+                <div class="c-row"><div class="c-avatar">SW</div><div><div class="c-name">Samantha Wright</div><div class="c-title">Marketing Manager — Wright’s Auto Care, Chicago IL</div></div></div>
+            </div>
+            <div class="testi" data-fade style="transition-delay:.1s;">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>I saw a 600% ROI on my ad spend in just three months. I was skeptical at first, but New Sparkplug’s guarantee convinced me to give it a shot. Their 90-Day Accelerator brought in more leads than I ever thought possible, and their sales tracking made it easy to see exactly where my business was growing.</blockquote>
+                <div class="c-row"><div class="c-avatar">CM</div><div><div class="c-name">Chris Martin</div><div class="c-title">Proprietor — Martin’s Auto Repair, Phoenix AZ</div></div></div>
+            </div>
+            <div class="testi" data-fade>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>We were spending a lot on marketing, but it wasn’t bringing the results we wanted. New Sparkplug changed everything. Within 90 days, our monthly revenue increased by 75%, and we’re consistently booked out weeks in advance. Their team is incredible.</blockquote>
+                <div class="c-row"><div class="c-avatar">ML</div><div><div class="c-name">Maria Lopez</div><div class="c-title">Manager — Lopez Auto Services, Miami FL</div></div></div>
+            </div>
+            <div class="testi" data-fade style="transition-delay:.1s;">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>Their 90-Day Growth Accelerator completely transformed our business. In just three months, we saw a 500% increase in leads and our revenue more than doubled. The custom landing pages and targeted Google Ads brought in exactly the customers we needed. The lead guarantee isn’t just a promise — they really deliver.</blockquote>
+                <div class="c-row"><div class="c-avatar">JS</div><div><div class="c-name">Joshua Stevens</div><div class="c-title">Owner — Stevens Auto Repair Shop</div></div></div>
             </div>
         </div>
-    </section>
-
-    <section class="about">
-        <div class="container">
-            <div class="about-content">
-                <div data-reveal>
-                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Anthony-Chen-Working.jpg" alt="Anthony Chen">
-                </div>
-                <div data-reveal>
-                    <span class="section-tag">Founder</span>
-                    <h2>Meet Anthony Chen</h2>
-                    <p style="font-size: 18px; color: var(--light-gray); margin-bottom: 24px;">Anthony founded NewSparkPlug with one mission: to help independent auto repair shop owners reclaim their time and grow their profits. After seeing too many shop owners get burned by generic marketing agencies, he built a system tailored specifically to the unique needs of the automotive industry.</p>
-                    <p style="font-size: 18px; color: var(--light-gray);">"We don't work with everyone. We work with the shops that are ready to dominate their local market."</p>
-                </div>
+    </div>
+</section>
+<section id="strategy-call" class="lead-bg">
+    <div class="container">
+        <div class="lead-grid">
+            <div data-fade>
+                <h2>Get Your Free Bay-Filling Audit</h2>
+                <p>We’ll analyze your market, your current marketing, and show you exactly how many repair orders you’re leaving on the table every single month. No pitch. Just data and a plan.</p>
+                <ul class="lead-perks">
+                    <li>Takes less than 15 minutes</li>
+                    <li>We review your market and competitors</li>
+                    <li>You keep the findings no matter what</li>
+                    <li>Zero obligation, zero pressure</li>
+                </ul>
+            </div>
+            <div data-fade>
+                <form class="lead-form" onsubmit="return false;">
+                    <input type="text" placeholder="Your Shop Name">
+                    <input type="email" placeholder="Email Address">
+                    <input type="tel" placeholder="Phone Number">
+                    <button class="btn-dark" type="submit">Analyze My Shop Now &#8594;</button>
+                    <p class="lead-privacy">&#128274; Your info stays private. No spam, ever.</p>
+                </form>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 NewSparkPlug. All Rights Reserved. Built for Auto Repair Shop Owners.</p>
+    </div>
+</section>
+<section class="section" style="background:var(--darker);">
+    <div class="container">
+        <span class="eyebrow" data-fade>Programs</span>
+        <h2 class="sec-title" data-fade>Pick Your Growth Level. Every Package Is Guaranteed.</h2>
+        <p class="sec-sub" data-fade>Every program comes with our lead volume guarantee. Miss the target — you get your ad spend back. Simple.</p>
+        <div class="price-grid">
+            <div class="price-card" data-fade>
+                <div class="price-name">Starter Spark</div>
+                <div class="price-desc">For shops ready to test what precision auto marketing can do</div>
+                <div class="price-budget">,500–,000/mo ad budget</div>
+                <div class="price-cta-lbl">Custom Quote</div>
+                <div class="price-note">Based on your market &amp; shop size</div>
+                <ul class="price-ul">
+                    <li>1–5 Google Ads campaigns, local keyword targeting</li>
+                    <li>Google Business Profile optimization + weekly posts</li>
+                    <li>Service-specific landing page creation</li>
+                    <li>Basic call tracking</li>
+                    <li>Bi-weekly performance meetings</li>
+                    <li>Monthly reporting dashboard</li>
+                    <li>Lead volume guarantee</li>
+                </ul>
+                <a href="#strategy-call" class="btn-outline" style="width:100%;text-align:center;display:block;">Book a Strategy Call</a>
+            </div>
+            <div class="price-card hot" data-fade style="transition-delay:.1s;">
+                <div class="price-name">Basic Tune-Up</div>
+                <div class="price-desc">For shops serious about dominating their local market</div>
+                <div class="price-budget">Recommended for scaling shops</div>
+                <div class="price-cta-lbl">Custom Quote</div>
+                <div class="price-note">Based on your market &amp; shop size</div>
+                <ul class="price-ul">
+                    <li>Everything in Starter Spark, plus:</li>
+                    <li>10 Google Ads campaigns, advanced bidding</li>
+                    <li>Local SEO + 3 SEO-optimized service pages</li>
+                    <li>Weekly social media posting</li>
+                    <li>Google Display retargeting campaigns</li>
+                    <li>Bi-weekly performance deep-dives</li>
+                    <li>Lead volume guarantee</li>
+                </ul>
+                <a href="#strategy-call" class="btn-red" style="width:100%;text-align:center;display:block;">Book a Strategy Call</a>
+            </div>
+            <div class="price-card" data-fade style="transition-delay:.2s;">
+                <div class="price-name">Performance Boost</div>
+                <div class="price-desc">Full-stack marketing takeover for shops going all-in</div>
+                <div class="price-budget">Complete marketing domination</div>
+                <div class="price-cta-lbl">Custom Quote</div>
+                <div class="price-note">Based on your market &amp; shop size</div>
+                <ul class="price-ul">
+                    <li>Everything in Basic Tune-Up, plus:</li>
+                    <li>10–15 campaigns, model-specific targeting</li>
+                    <li>Custom mobile website + appointment booking</li>
+                    <li>Monthly automotive blog content</li>
+                    <li>AI chatbot for booking &amp; diagnostics</li>
+                    <li>Weekly strategy calls, dedicated account manager</li>
+                    <li>Lead volume guarantee</li>
+                </ul>
+                <a href="#strategy-call" class="btn-outline" style="width:100%;text-align:center;display:block;">Book a Strategy Call</a>
+            </div>
         </div>
-    </footer>
-
-    <script>
-        // Scroll Reveal Animation
-        const reveals = document.querySelectorAll('[data-reveal]');
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        reveals.forEach(reveal => observer.observe(reveal));
-    </script>
+    </div>
+</section>
+<section class="section sol-bg">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img" data-fade>
+                <div class="about-img-placeholder">Anthony Chen<br>Founder Photo</div>
+            </div>
+            <div data-fade>
+                <span class="eyebrow">The Founder</span>
+                <h2>Anthony Chen</h2>
+                <div class="about-role">Founder — NewSparkPlug</div>
+                <p class="about-p">Anthony built NewSparkPlug after watching too many independent shop owners get burned by agencies that had no idea how the automotive industry actually worked. Generic campaigns. Vanity metrics. Agencies celebrating “impressions” while your bays sat empty.</p>
+                <p class="about-p">He built a system specifically for the repair shop world — one engineered around ROI, repair orders, and car count. Every service, every tool, every guarantee was designed to fill bays with customers who are ready to spend.</p>
+                <p class="about-p">The 90-Day Growth Accelerator became the benchmark for auto repair marketing, eventually growing enough to be acquired by Adborg in 2025 — validation of what shop owners already knew from the results.</p>
+                <blockquote class="about-q">“We don’t just talk results — we guarantee them. Every dollar of your ad spend has to prove itself.”</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="final">
+    <div class="container">
+        <span class="eyebrow" data-fade>Ready to Grow?</span>
+        <h2 data-fade>Your Competitors Are Already Running Ads. <span class="accent">Are You?</span></h2>
+        <p data-fade>Every week you wait is another week of empty bays and missed revenue. Book your free audit today.</p>
+        <div data-fade style="margin-bottom:24px;"><a href="#strategy-call" class="btn-red" style="padding:18px 52px;font-size:16px;">Book Free Strategy Call</a></div>
+        <p class="guarantee-row" data-fade>✓ No long-term contracts &nbsp;&nbsp; ✓ Lead volume guarantee on every program &nbsp;&nbsp; ✓ Money back if we miss targets</p>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="foot-inner">
+            <div class="logo-txt" style="font-size:18px;">New<span>Spark</span>Plug</div>
+            <p class="foot-copy">&#169; 2026 NewSparkPlug. All Rights Reserved.</p>
+            <a href="https://www.newsparkplug.com/privacy-policy/" style="color:var(--gray);font-size:13px;">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+<script>
+    const fadeEls = document.querySelectorAll("[data-fade]");
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);} });
+    }, {threshold:0.08});
+    fadeEls.forEach(el => obs.observe(el));
+    document.querySelectorAll("a[href^="#"]").forEach(a => {
+        a.addEventListener("click", e => {
+            const t = document.querySelector(a.getAttribute("href"));
+            if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});}
+        });
+    });
+</script>
 </body>
 </html>
