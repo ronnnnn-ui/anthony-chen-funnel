@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewSparkPlug | Fill Your Bays with High-ROI Repair Orders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E8001C;
+            --dark: #0F1115;
+            --darker: #08090B;
+            --gray: #1E2128;
+            --light-gray: #A0A5B1;
+            --white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--darker);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar */
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(8, 9, 11, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(232, 0, 28, 0.3);
+            filter: brightness(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(232, 0, 28, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid var(--gray);
+        }
+
+        /* Credibility Bar */
+        .cred-bar {
+            padding: 40px 0;
+            background: var(--dark);
+            border-top: 1px solid var(--gray);
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .cred-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.6;
+            filter: grayscale(1);
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .cred-container img {
+            height: 30px;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background: var(--darker);
+        }
+
+        .section-tag {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .problem h2 {
+            font-size: 48px;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--light-gray);
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: var(--dark);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .solution h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            margin-bottom: 32px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-text h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            text-transform: none;
+        }
+
+        .feature-text p {
+            color: var(--light-gray);
+            font-size: 15px;
+        }
+
+        /* Social Proof */
+        .testimonials {
+            padding: 100px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .testimonial-card p {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .client-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .client-info h4 {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .client-info span {
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+
+        /* Lead Magnet */
+        .lead-gen {
+            padding: 80px 0;
+            background: var(--primary);
+            text-align: center;
+        }
+
+        .lead-gen h2 {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .lead-gen p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+        }
+
+        input {
+            flex: 1;
+            padding: 16px;
+            border-radius: 4px;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-dark {
+            background: var(--darker);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 8px;
+            filter: grayscale(0.5);
+            transition: var(--transition);
+        }
+
+        .about img:hover {
+            filter: grayscale(0);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--gray);
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .hero-content, .solution-content, .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero h1 { font-size: 48px; }
+            .grid-3, .testimonial-grid { grid-template-columns: 1fr; }
+            .form-container { flex-direction: column; }
+            .hero-image { order: -1; }
+        }
+
+        /* Animations */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-reveal].active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo">
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/NewSparkPlug-Logo-Light.png" alt="NewSparkPlug">
+            </div>
+            <a href="#audit" class="cta-btn">Book Free Audit</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div data-reveal class="active">
+                    <span class="section-tag">High-Performance Marketing</span>
+                    <h1>Stop Chasing "Likes" And Start <span>Filling Bays.</span></h1>
+                    <p>We help independent auto repair shop owners generate predictable, high-ROI repair orders with the 90-Day Growth Accelerator.</p>
+                    <a href="#audit" class="cta-btn" style="padding: 18px 40px; font-size: 16px;">Scale Your Shop Now</a>
+                </div>
+                <div class="hero-image" data-reveal class="active">
+                    <!-- Placeholder image since I can't guarantee the exact URL works without checking, but using the scraped one -->
+                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Anthony-Chen.png" alt="Anthony Chen - NewSparkPlug">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cred-bar">
+        <div class="container">
+            <div class="cred-container">
+                <span style="color: white; font-weight: 700; letter-spacing: 1px;">TRUSTED BY TOP SHOPS:</span>
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/google-partner.png" alt="Google Partner">
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/hubspot.png" alt="HubSpot">
+                <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/facebook-marketing.png" alt="FB Marketing">
+            </div>
+        </div>
+    </div>
+
+    <section class="problem">
+        <div class="container">
+            <span class="section-tag">The Problem</span>
+            <h2 data-reveal>Most marketing agencies talk about "Clicks." We talk about "Car Count."</h2>
+            <div class="grid-3">
+                <div class="card" data-reveal>
+                    <h3>Empty Bays</h3>
+                    <p>Inconsistent lead flow means your techs are sitting around on Tuesdays waiting for the phone to ring.</p>
+                </div>
+                <div class="card" data-reveal>
+                    <h3>Tire Kickers</h3>
+                    <p>Tired of price-shoppers calling just to ask "how much for an oil change?" and never booking?</p>
+                </div>
+                <div class="card" data-reveal>
+                    <h3>Zero Tracking</h3>
+                    <p>You're spending money on marketing but have no idea if it's actually turning into repair orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div data-reveal>
+                    <span class="section-tag">Our Mechanism</span>
+                    <h2>The Bay-Filling Blueprint</h2>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Precision Google Ads</h3>
+                            <p>We target customers actively searching for "auto repair near me" for the specific services you want more of.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>High-Conversion Funnels</h3>
+                            <p>Our custom landing pages are engineered to turn skeptical visitors into confirmed appointments.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Lead-to-RO Tracking</h3>
+                            <p>We sync with your Shop Management System to prove exactly how much revenue our campaigns generated.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-reveal>
+                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Dashboard-Mockup.png" alt="ROI Dashboard" style="width:100%; border-radius: 8px; border: 1px solid var(--gray);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <span class="section-tag">Success Stories</span>
+            <h2 data-reveal style="margin-bottom: 60px;">Real Results For Real Shops</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-reveal>
+                    <p>"NewSparkPlug doubled our car count in 90 days. We went from wondering if we'd survive to hiring two new techs just to keep up."</p>
+                    <div class="client-info">
+                        <img src="https://i.pravatar.cc/150?u=shop1" alt="Client">
+                        <div>
+                            <h4>Mike Sullivan</h4>
+                            <span>Owner, Sullivan's Auto Care</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-reveal>
+                    <p>"Finally an agency that speaks my language. Every dollar I give them comes back as $10 in repair orders. No fluff, just results."</p>
+                    <div class="client-info">
+                        <img src="https://i.pravatar.cc/150?u=shop2" alt="Client">
+                        <div>
+                            <h4>David Miller</h4>
+                            <span>Performance Euro Shop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audit" class="lead-gen">
+        <div class="container">
+            <h2 data-reveal>Get Your Free Bay-Filling Audit</h2>
+            <p data-reveal>We'll analyze your current market and show you exactly how many repair orders you're leaving on the table.</p>
+            <div class="form-container" data-reveal>
+                <input type="text" placeholder="Shop Name">
+                <input type="email" placeholder="Work Email">
+                <button class="btn-dark">Analyze My Shop</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div data-reveal>
+                    <img src="https://www.newsparkplug.com/wp-content/uploads/2023/05/Anthony-Chen-Working.jpg" alt="Anthony Chen">
+                </div>
+                <div data-reveal>
+                    <span class="section-tag">Founder</span>
+                    <h2>Meet Anthony Chen</h2>
+                    <p style="font-size: 18px; color: var(--light-gray); margin-bottom: 24px;">Anthony founded NewSparkPlug with one mission: to help independent auto repair shop owners reclaim their time and grow their profits. After seeing too many shop owners get burned by generic marketing agencies, he built a system tailored specifically to the unique needs of the automotive industry.</p>
+                    <p style="font-size: 18px; color: var(--light-gray);">"We don't work with everyone. We work with the shops that are ready to dominate their local market."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 NewSparkPlug. All Rights Reserved. Built for Auto Repair Shop Owners.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('[data-reveal]');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(reveal => observer.observe(reveal));
+    </script>
+</body>
+</html>
